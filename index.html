@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Mr Adel</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      overflow: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      text-align: center;
+    }
+
+    .card {
+      animation: glow 2s infinite alternate;
+      z-index: 10;
+    }
+
+    /* تنسيق الرسالة الثانية */
+    #second-message {
+      display: none; /* مخفية في البداية */
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    h1 {
+      font-size: 60px;
+      color: #ffd700;
+      margin-bottom: 10px;
+    }
+
+    .prof-text {
+      color: #00d4ff;
+      font-weight: bold;
+      font-size: 40px;
+    }
+
+    p {
+      font-size: 25px;
+      line-height: 1.6;
+    }
+
+    @keyframes glow {
+      from { transform: scale(1); text-shadow: 0 0 10px #fff; }
+      to { transform: scale(1.05); text-shadow: 0 0 25px #ffd700; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .balloon {
+      position: absolute;
+      bottom: -100px;
+      font-size: 40px;
+      animation: float 8s linear infinite;
+      user-select: none;
+    }
+
+    @keyframes float {
+      from { transform: translateY(0); }
+      to { transform: translateY(-120vh); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="first-message" class="card">
+    <h1>🎉 Happy Birthday Mr Adel 🎉</h1>
+    <p>
+      Wishing you happiness, success,<br>
+      and an amazing year ahead! ❤️
+    </p>
+  </div>
+
+  <div id="second-message" class="card">
+    <h1 class="prof-text">كل سنة وانت طيب يا بروفف</h1>
+    <p>وعقبال مليون سنة حلوة يا رب 🌟</p>
+  </div>
+
+  <script>
+    // وظيفة إنشاء البالونات
+    function createBalloon(){
+      const balloon = document.createElement("div");
+      balloon.classList.add("balloon");
+      const icons = ["🎈", "✨", "🎂", "🥳"]; // تنويع الأشكال
+      balloon.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+      balloon.style.left = Math.random() * 100 + "vw";
+      balloon.style.animationDuration = (5 + Math.random() * 5) + "s";
+      document.body.appendChild(balloon);
+
+      setTimeout(() => {
+        balloon.remove();
+      }, 10000);
+    }
+
+    setInterval(createBalloon, 400);
+
+    // التبديل بين الرسالتين بعد 4 ثواني
+    setTimeout(() => {
+      const first = document.getElementById('first-message');
+      const second = document.getElementById('second-message');
+      
+      first.style.display = 'none'; // إخفاء الأولى
+      second.style.display = 'block'; // إظهار الثانية
+    }, 5000); // 5000 تعني 5 ثواني
+  </script>
+
+</body>
+</html>
